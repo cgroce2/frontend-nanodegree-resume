@@ -53,9 +53,7 @@ var title = HTMLworkTitle.replace("%data%", work.title);
 var city = HTMLworkLocation.replace("%data%", work.city);
 var dates = HTMLworkDates.replace("%data%", work.years);
 var description = HTMLworkDescription.replace("%data%", work.description);
-//var employer = HTMLworkEmployer.replace("%data%"), work.employer);
-//var work.employer = HTMLworkEmployer.replace("%data%", work.employer);
-//var place = HTMLworkLocation.replace("%data%", work.location);
+
 
 $("#workExperience").append(job1);
 $("#workExperience").append(employer);
@@ -63,17 +61,44 @@ $("#workExperience").append(title);
 $("#workExperience").append(city);
 $("#workExperience").append(dates);
 $("#workExperience").append(description);
-//$("#workExperience").append(employer);
-//$("#main").append(place);
 
-//var eductaion = {};
-//eductaion["name"] = "University of Georgia";
-//eductaion["city"] = "Athens";
-//eductaion["years"] = "1987-1992";
 
-//$("main").append(eductaion.name);
-//$("#main").append(education.city);
-//$("#main").append(education.years);
+var education = {};
+education.first;
+education.name = "University of Georgia";
+education.city = "Athens, Georgia";
+education["years"] = "1987-1992";
+education.major = "B.S. Computer Science"
+
+var firstcollege = HTMLschoolStart.replace("%education-entry%", education.first);
+var collegename = HTMLschoolName.replace("%data%", education.name);
+var educity = HTMLschoolLocation.replace("%data%", education.city);
+var eduyears = HTMLschoolDates.replace("%data%", education.years);
+var major = HTMLschoolMajor.replace("%data%", education.major)
+
+$("#education").append(firstcollege);
+$("#education").append(collegename);
+$("#education").append(educity);
+$("#education").append(eduyears);
+$("#education").append(major);
+
+var educationonline = {};
+educationonline.degree = "Front-End Developer Nanodegree";
+educationonline.school = "Udacity";
+educationonline.dates = "April 2015 - December 2015";
+educationonline.url = "http://www.udacity.com";
+
+var nanoheading = HTMLonlineClasses;
+var onlinedegree = HTMLonlineTitle.replace("%data%", educationonline.degree);
+var onlineschool = HTMLonlineSchool.replace("%data%", educationonline.school);
+var onlinedates = HTMLonlineDates.replace("%data%", educationonline.dates);
+var onlineurl = HTMLonlineURL.replace("%data%", educationonline.url);
+
+$("#education").append(nanoheading);
+$("#education").append(onlinedegree);
+$("#education").append(onlineschool);
+$("#education").append(onlinedates);
+$("#education").append(onlineurl);
 
 
 
