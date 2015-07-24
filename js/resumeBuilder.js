@@ -67,14 +67,14 @@ var education = {};
 education.first;
 education.name = "University of Georgia";
 education.city = "Athens, Georgia";
-education["years"] = "1987-1992";
-education.major = "B.S. Computer Science"
+education.years = "1987-1992";
+education.major = "Computer Science";
 
 var firstcollege = HTMLschoolStart.replace("%education-entry%", education.first);
 var collegename = HTMLschoolName.replace("%data%", education.name);
 var educity = HTMLschoolLocation.replace("%data%", education.city);
 var eduyears = HTMLschoolDates.replace("%data%", education.years);
-var major = HTMLschoolMajor.replace("%data%", education.major)
+var major = HTMLschoolMajor.replace("%data%", education.major);
 
 $("#education").append(firstcollege);
 $("#education").append(collegename);
@@ -98,7 +98,9 @@ $("#education").append(nanoheading);
 $("#education").append(onlinedegree);
 $("#education").append(onlineschool);
 $("#education").append(onlinedates);
-$("#education").append(onlineurl);
+$("#education").append(onlineurl);s
+
+
 
 
 
