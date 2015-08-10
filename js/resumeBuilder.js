@@ -45,28 +45,42 @@ $("#header").append(from);
 $("#header").append(message);
 $("#header").append(picture);
 
-var work = {};
-work.position1;
-work.employer = "salesforce.com";
-work.title = "Director Quality Engineering";
-work.city = "Atlanta, Georgia";
-work.years = "04/2015 - Present";
-work.description = "Responsible for establishing SQA Department and testing processes, along with building and managing a high performing team of QA engineers. Develop, implement and manage strategic test programs to increase efficiency; such as test automation across enterprise level architecture, including application, middleware and data layers for web and mobile.  Responsible for strategic SQA tooling decisions, implementation and build out.  Manage all planning, design and execution of SQA work for complex highly configurable SaaS environment.";
+var work = {
+	"jobs": [
+		{
+			"employer": "Salesforce.com",
+			"city": "Atlanta, Georgia",
+			"title": "Director Quality Engineering",
+			"years": "04/2015 - Present",
+			"description": "Responsible for QE team, tooling, staffing, and overall quality."
+		},
+		{
+			"employer": "Peoplenet",
+			"city": "Atlanta, Georgia",
+			"title": "Director Quality Engineering",
+			"years": "05/11 - 04/15",
+			"description": "Responsible for establishing SQA Department and testing processes, along with building and managing a high performing team of QA engineers. Develop, implement and manage strategic test programs to increase efficiency; such as test automation across enterprise level architecture, including application, middleware and data layers for web and mobile.  Responsible for strategic SQA tooling decisions, implementation and build out.  Manage all planning, design and execution of SQA work for complex highly configurable SaaS environment."
 
-var job1 = HTMLworkStart.replace("%work-entry%", work.position1);
-var employer = HTMLworkEmployer.replace("%data%", work.employer);
-var title = HTMLworkTitle.replace("%data%", work.title);
-var city = HTMLworkLocation.replace("%data%", work.city);
-var dates = HTMLworkDates.replace("%data%", work.years);
-var description = HTMLworkDescription.replace("%data%", work.description);
+		}
+	]
+};
 
+for(var job in work.jobs) {
 
-$("#workExperience").append(job1);
-$("#workExperience").append(employer);
-$("#workExperience").append(title);
-$("#workExperience").append(city);
-$("#workExperience").append(dates);
-$("#workExperience").append(description);
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	var formattedCity = HTMLworkLocation.replace("%data%", work.jobs[job].city);
+	var formattedYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+	$(".work-entry:last").append(formattedEmployerTitle);
+	$(".work-entry:last").append(formattedCity);
+	$(".work-entry:last").append(formattedYears);
+	$(".work-entry:last").append(formattedDescription);
+}
 
 
 var education = {
@@ -117,6 +131,8 @@ education.display = function() {
   	}
 };
 education.display();
+
+
 
 
 
