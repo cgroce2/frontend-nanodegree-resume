@@ -45,6 +45,8 @@ $("#header").append(from);
 $("#header").append(message);
 $("#header").append(picture);
 
+var displaywork = function() {
+
 var work = {
 	"jobs": [
 		{
@@ -82,6 +84,9 @@ for(var job in work.jobs) {
 	$(".work-entry:last").append(formattedDescription);
 }
 
+}
+
+displaywork();
 
 var education = {
 	"schools": [
