@@ -115,7 +115,7 @@ function initializeMap() {
   };
 
 
-  map = new google.maps.Map(document.querySelector('#mapDiv'), mapOptions);
+  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
   /*

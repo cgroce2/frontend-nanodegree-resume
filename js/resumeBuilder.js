@@ -44,7 +44,6 @@ $("#header").append(from);
 $("#header").append(message);
 $("#header").append(picture);
 
-var displaywork = function() {
 
 var work = {
 	"jobs": [
@@ -65,6 +64,8 @@ var work = {
 		}
 	]
 };
+
+var displaywork = function() {
 
 for(var job in work.jobs) {
 
