@@ -187,7 +187,7 @@ function inName(name) {
 $("#main").append(internationalizeButton);
 
 //adding a map for places lived and worked
-$("#mapDiv").append(googleMap);
+$("#map-div").append(googleMap);
 
 
 
