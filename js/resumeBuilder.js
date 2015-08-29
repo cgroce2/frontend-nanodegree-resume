@@ -8,11 +8,11 @@ var bio = {
 		"github": "https://github.com/cgroce2/",
 		"location": "Atlanta, GA"
 	},
-	"welcomeMessage" : "Welcome to my resume, my name is Clark Groce and I am awesome!",
+	"welcomeMessage" : "Welcome to my resume, my name is Clark Groce and I enjoy technology, programming, strategic software testing and life in general!",
 	"skills": [
-		"programming", "teaching", "JS", "QE extraordinaire",
+		"Programming", "QE Extraordinaire", "Craft Beer", "Tennis",
 	],
-	"bioPic": "images/testimage.png"
+	"bioPic": "images/profilepic.JPG"
 };
 
 if(bio.skills.length > 0) {
