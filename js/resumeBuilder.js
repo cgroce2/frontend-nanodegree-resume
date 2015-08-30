@@ -1,4 +1,5 @@
 
+// Start Bio section of resume
 var bio = {
 	"name": "Clark Groce",
 	"role": "Director of Quality Engineering",
@@ -14,7 +15,8 @@ var bio = {
 	],
 	"bioPic": "images/profilepic.JPG"
 };
-
+//This section loops through the bio.skills array and provides
+//the subsequent jquery to display each skill in the array
 if(bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
@@ -27,6 +29,8 @@ if(bio.skills.length > 0) {
 	$("#skills").append(formattedSkill);
 }
 
+//This section is using the string .replace method to pass my profile data to their
+//corresponding html objects in helper.js
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var picture = HTMLbioPic.replace('%data%', bio.bioPic);
@@ -35,7 +39,7 @@ var cell = HTMLmobile.replace('%data%', bio.contacts.mobile);
 var email = HTMLemail.replace("%data%", bio.contacts.email);
 var from = HTMLlocation.replace("%data%", bio.contacts.location);
 
-
+//jquery to display above objects to header div
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 $("#header").append(cell);
@@ -44,7 +48,8 @@ $("#header").append(from);
 $("#header").append(message);
 $("#header").append(picture);
 
-
+//Begin work section of resume.  This is the work object containing jobs and related job data to be 
+//displayed in the Work Experience div.
 var work = {
 	"jobs": [
 		{
@@ -52,19 +57,22 @@ var work = {
 			"location": "Atlanta, GA",
 			"title": "Director Quality Engineering",
 			"years": "04/2015 - Present",
-			"description": "Responsible for QE team, tooling, staffing, and overall quality."
+			"description": "Responsible building and leading high performance Quality Engineering team at Salesforce, along with leading development and implemention of strategic software testing programs such as UI automation, test automation with build and CI pipeline, performance and load testing."
 		},
 		{
 			"employer": "Peoplenet",
 			"location": "Atlanta, GA",
 			"title": "Director Quality Engineering",
 			"years": "05/11 - 04/15",
-			"description": "Responsible for establishing SQA Department and testing processes, along with building and managing a high performing team of QA engineers. Develop, implement and manage strategic test programs to increase efficiency; such as test automation across enterprise level architecture, including application, middleware and data layers for web and mobile.  Responsible for strategic SQA tooling decisions, implementation and build out.  Manage all planning, design and execution of SQA work for complex highly configurable SaaS environment."
+			"description": "Responsible for establishing SQA Department and testing processes, along with building and managing a team of QA engineers. Develop, implement and manage strategic test programs to increase efficiency; such as test automation across enterprise level architecture, including application, middleware and data layers for web and mobile.  Responsible for strategic SQA tooling decisions, implementation and build out.  Manage all planning, design and execution of SQA work for complex highly configurable SaaS environment."
 
 		}
 	]
 };
 
+//Function to loop through jobs array, then corresponding
+//job meta data objects are created and passed to their html objects in helper.js, 
+//and then appended to the work-entry div using jquery.
 var displaywork = function() {
 
 for(var job in work.jobs) {
@@ -96,16 +104,19 @@ var projects = {
 		{
 			"title" : "Test automation framework",
 			"dates" : "04/2015 - 08/2015",
-			"description" : "Built Selenium base framework for marketing automation product",
-			"images" : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Test_Automation_Interface.png/220px-Test_Automation_Interface.png"
+			"description" : "Built test automation framework using Selenium Web Driver using a page object pattern that utilized view classes to separate out DOM references into container classes.  Using this page object pattern allowed for the ability to have a page object represent a self-contained section of a page instead of the entire page.  Ultimately this allowed us to gain much more efficient and broader test coverage.",
+			"images" : "http://cdn.guru99.com/images/AdvanceSelenium/071514_0722_PageObjectM2.png"
 		},
 		{
 			"title" : "Mobile test automation",
 			"dates" : "08/2014 - 01/2015",
-			"description" : "Built mobile test automation framework with Appium for IOS tablet product",
-			"images" : "https://unmesh.files.wordpress.com/2013/02/photo-1.jpg"
+			"description" : "Designed and built automated testing framework for mobile devices (IOS and Android) using Selenium API and Appium which increased speed of regression cycle by 50%.",
+			"images" : "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR1fkAkXFLOZAGBKiX4RfWmT659xMhh3Pb0ruuo9WuFAraDG9I0-g"
 		}
-		],	
+		],
+		//Function to loop through projects array, then corresponding
+		//project meta data objects are created and passed to their html objects in helper.js, 
+		//and then appended to the project-entry div using jquery.	
 		display: function() {
 		for (var project in projects.projects) {
 			// create new div for projects
@@ -126,7 +137,7 @@ var projects = {
 projects.display();
 
 
-
+//Begin education section of resume
 var education = {
 	"schools": [
 		{
@@ -146,6 +157,10 @@ var education = {
 		}
 	]
 };
+
+//Function to loop through education array, then corresponding
+//education meta data objects are created and passed to their html objects in helper.js, 
+//and then appended to the education-entry div using jquery.
 education.display = function() {
 	for (school in education.schools) {
 		$("#education").append(HTMLschoolStart);
@@ -176,6 +191,7 @@ education.display = function() {
 };
 education.display();
 
+//Function to "internationalize" name on resume when button clicked
 function inName(name) {
 	name = bio.name.trim().split(" ");
 	console.log(name);
@@ -184,7 +200,7 @@ function inName(name) {
 
 	return name[0] +" "+ name[1];
 }
-
+//append internationalize button to resume
 $("#main").append(internationalizeButton);
 
 //adding a map for places lived and worked
