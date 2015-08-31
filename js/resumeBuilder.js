@@ -1,52 +1,48 @@
 
 // Start Bio section of resume
 var bio = {
-	"name": "Clark Groce",
-	"role": "Director of Quality Engineering",
-	"contacts": {
-		"mobile": "470-363-8446",
-		"email": "clarkgroce@comcast.net",
-		"github": "https://github.com/cgroce2/",
-		"location": "Atlanta, GA"
-	},
-	"welcomeMessage" : "Welcome to my resume, my name is Clark Groce and I enjoy technology, programming, strategic software testing and life in general!",
-	"skills": [
-		"Programming", "QE Extraordinaire", "Craft Beer", "Tennis",
-	],
-	"bioPic": "images/profilepic.JPG"
+		"name": "Clark Groce",
+		"role": "Director of Quality Engineering",
+		"contacts": {
+			"mobile": "470-363-8446",
+			"email": "clarkgroce@comcast.net",
+			"github": "https://github.com/cgroce2/",
+			"location": "Atlanta, GA"
+		},
+		"welcomeMessage" : "Welcome to my resume, my name is Clark Groce and I enjoy technology, programming, strategic software testing and life in general!",
+		"skills": [
+			"Programming", "QE Extraordinaire", "Craft Beer", "Tennis",
+		],
+		"bioPic": "images/profilepic.JPG",
+		//function to display bio section of resume
+		display: function() {
+		//This section loops through the bio.skills array and provides
+		//the subsequent jquery to append & display each skill in the array
+		$("#header").append(HTMLskillsStart);
+		for (var i in bio.skills) {
+			var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+			$("#skills").append(formattedSkill);
+		}
+		//This section is using the string .replace method to pass my profile data to their
+		//corresponding html objects in helper.js, then using jquery to display above objects to header div.
+		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+		$("#header").prepend(formattedRole);
+		var picture = HTMLbioPic.replace('%data%', bio.bioPic);
+		$("#header").append(picture);
+		var message = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+		$("#header").append(message);
+		var cell = HTMLmobile.replace('%data%', bio.contacts.mobile);
+		$("#header").append(cell);
+		var email = HTMLemail.replace("%data%", bio.contacts.email);
+		$("#header").append(email);
+		var from = HTMLlocation.replace("%data%", bio.contacts.location);
+		$("#header").append(from);
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);
+		$("#header").prepend(formattedName);
+		}
 };
-//This section loops through the bio.skills array and provides
-//the subsequent jquery to display each skill in the array
-if(bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-	$("#skills").append(formattedSkill);
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill);
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$("#skills").append(formattedSkill);
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$("#skills").append(formattedSkill);
-}
-
-//This section is using the string .replace method to pass my profile data to their
-//corresponding html objects in helper.js
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var picture = HTMLbioPic.replace('%data%', bio.bioPic);
-var message = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var cell = HTMLmobile.replace('%data%', bio.contacts.mobile);
-var email = HTMLemail.replace("%data%", bio.contacts.email);
-var from = HTMLlocation.replace("%data%", bio.contacts.location);
-
-//jquery to display above objects to header div
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").append(cell);
-$("#header").append(email);
-$("#header").append(from);
-$("#header").append(message);
-$("#header").append(picture);
+bio.display();
+//End Bio section
 
 //Begin work section of resume.  This is the work object containing jobs and related job data to be 
 //displayed in the Work Experience div.
@@ -67,37 +63,32 @@ var work = {
 			"description": "Responsible for establishing SQA Department and testing processes, along with building and managing a team of QA engineers. Develop, implement and manage strategic test programs to increase efficiency; such as test automation across enterprise level architecture, including application, middleware and data layers for web and mobile.  Responsible for strategic SQA tooling decisions, implementation and build out.  Manage all planning, design and execution of SQA work for complex highly configurable SaaS environment."
 
 		}
-	]
-};
-
+		],
 //Function to loop through jobs array, then corresponding
 //job meta data objects are created and passed to their html objects in helper.js, 
 //and then appended to the work-entry div using jquery.
-var displaywork = function() {
+		display: function() {
+		for (var job in work.jobs) {
+			// create new div for projects
+		$("#workExperience").append(HTMLworkStart);
 
-for(var job in work.jobs) {
-
-	$("#workExperience").append(HTMLworkStart);
-
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-	var formattedEmployerTitle = formattedEmployer + formattedTitle;
-	var formattedCity = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-	var formattedYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
-	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-
-	$(".work-entry:last").append(formattedEmployerTitle);
-	$(".work-entry:last").append(formattedCity);
-	$(".work-entry:last").append(formattedYears);
-	$(".work-entry:last").append(formattedDescription);
-}
-
-}
-
-displaywork();
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		$(".work-entry:last").append(formattedEmployerTitle);
+		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+		var formattedCity = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formattedCity);
+		var formattedYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
+		$(".work-entry:last").append(formattedYears);
+		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedDescription);
+		}
+	}
+};
+work.display();
+// End work section
 
 //Begin Projects section on resume
-
 var projects = {
 
 	"projects" : [
@@ -133,9 +124,8 @@ var projects = {
 		}
 	}
 };
-
 projects.display();
-
+//End Projects section
 
 //Begin education section of resume
 var education = {
@@ -162,7 +152,7 @@ var education = {
 //education meta data objects are created and passed to their html objects in helper.js, 
 //and then appended to the education-entry div using jquery.
 education.display = function() {
-	for (school in education.schools) {
+	for (var school in education.schools) {
 		$("#education").append(HTMLschoolStart);
 		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
 		$(".education-entry:last").append(formattedName);
@@ -190,6 +180,7 @@ education.display = function() {
 	}
 };
 education.display();
+//End eduction section
 
 //Function to "internationalize" name on resume when button clicked
 function inName(name) {
